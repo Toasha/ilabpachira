@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .neu-container {
+    background: #e9f2e6;
+    box-shadow: 8px 8px 18px #b8cbb3, -8px -8px 18px #ffffff;
+    border-radius: 1.5rem;
+  }
+  
+  .neu-card {
+    background: #e9f2e6;
+    box-shadow: 6px 6px 14px #b8cbb3, -6px -6px 14px #ffffff;
+    border-radius: 1.25rem;
+    transition: all 0.25s ease;
+  }
+
+  .neu-card-sm {
+    background: #e9f2e6;
+    box-shadow: 4px 4px 8px #b8cbb3, -4px -4px 8px #ffffff;
+    border-radius: 1rem;
+  }
+
+  .neu-button {
+    background: #e9f2e6;
+    box-shadow: 6px 6px 14px #b8cbb3, -6px -6px 14px #ffffff;
+    border-radius: 9999px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .neu-button:hover {
+    box-shadow: 4px 4px 8px #b8cbb3, -4px -4px 8px #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .neu-button:active {
+    box-shadow: inset 4px 4px 8px #b8cbb3, inset -4px -4px 8px #ffffff;
+    transform: translateY(0);
+  }
+
+  .neu-pressed {
+    background: #e9f2e6;
+    box-shadow: inset 4px 4px 8px #b8cbb3, inset -4px -4px 8px #ffffff;
+    border-radius: 1.25rem;
+  }
+
+  .neu-pressed-sm {
+    background: #e9f2e6;
+    box-shadow: inset 3px 3px 6px #b8cbb3, inset -3px -3px 6px #ffffff;
+    border-radius: 0.75rem;
+  }
+
+  /* グリーンアクセントのニューモーフィズム */
+  .neu-green-btn {
+    background: linear-gradient(135deg, #a4d08a, #90bf77);
+    box-shadow: 6px 6px 14px #b8cbb3, -6px -6px 14px #ffffff, inset 1px 1px 2px rgba(255,255,255,0.4);
+    color: #ffffff;
+    transition: all 0.25s ease;
+  }
+
+  .neu-green-btn:hover {
+    box-shadow: 4px 4px 10px #b8cbb3, -4px -4px 10px #ffffff;
+    transform: translateY(-2px);
+  }
+
+  .neu-green-btn:active {
+    background: linear-gradient(135deg, #8cb874, #9ccb83);
+    box-shadow: inset 4px 4px 8px #688a55, inset -4px -4px 8px #beec9f;
+    transform: translateY(0);
+  }
+
+  .neu-green-pressed {
+    background: #9ac681;
+    box-shadow: inset 4px 4px 8px #759c5f, inset -4px -4px 8px #bff0a3;
+    color: #ffffff;
+  }
+
+  .font-maru {
+    font-family: 'Zen Maru Gothic', 'Outfit', sans-serif;
+  }
+}
+
+/* アニメーション */
+@keyframes waterRipple {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.water-ripple {
+  animation: waterRipple 0.4s ease-out forwards;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-pop {
+  animation: popIn 0.25s ease-out forwards;
+}
+
+/* カスタムスクロールバー */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #e9f2e6;
+}
+::-webkit-scrollbar-thumb {
+  background: #b8cbb3;
+  border-radius: 3px;
+}
