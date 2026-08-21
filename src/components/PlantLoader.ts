@@ -1,3 +1,5 @@
+import animatedSproutGif from '../assets/animated_sprout_transparent.gif';
+
 /**
  * 植物が育つアニメーション付きローディングコンポーネント
  */
@@ -14,7 +16,7 @@ export function createPlantLoader(): HTMLElement {
       <!-- ユーザー自作の背景透過GIFアニメーション -->
       <div class="relative w-44 h-40 flex items-center justify-center mb-2">
         <img 
-          src="/animated_sprout_transparent.gif" 
+          src="${animatedSproutGif}" 
           alt="植物が育つアニメーション" 
           class="w-full h-full object-contain pointer-events-none select-none drop-shadow-sm animate-sway-group" 
         />
