@@ -27,20 +27,20 @@ export function createPlantLoader(): HTMLElement {
               class="animate-sprout"
             />
             
-            <!-- 左の丸い双葉 (最初の配色: #9ac681) -->
+            <!-- 左の丸い双葉 (茎の頭部をすっぽり包み込むカバー構造) -->
             <g class="animate-leaf-left" style="transform-origin: 50px 60px;">
               <path 
-                d="M 50,60 C 24,62 12,42 30,42 C 44,41 47,52 50,60 Z" 
+                d="M 50,61 C 24,63 12,42 30,42 C 44,41 48,52 50,61 Z" 
                 fill="#9ac681" 
               />
               <!-- 葉脈 -->
               <path d="M 50,60 Q 35,50 26,45" fill="none" stroke="#e5f2e1" stroke-width="1.8" opacity="0.8" stroke-linecap="round" />
             </g>
 
-            <!-- 右の丸い双葉 (最初の配色: #7fae64) -->
+            <!-- 右の丸い双葉 (茎の頭部をすっぽり包み込むカバー構造) -->
             <g class="animate-leaf-right" style="transform-origin: 50px 60px;">
               <path 
-                d="M 50,60 C 76,62 88,42 70,42 C 56,41 53,52 50,60 Z" 
+                d="M 50,61 C 76,63 88,42 70,42 C 56,41 52,52 50,61 Z" 
                 fill="#7fae64" 
               />
               <!-- 葉脈 -->

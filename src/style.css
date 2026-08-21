@@ -148,7 +148,8 @@
     opacity: 1;
   }
   100% {
-    transform: scale(0) rotate(15deg);
+    /* 茎と同じ縦横比率で滑らかに縮み、茎頭がはみ出ない */
+    transform: scale(0) rotate(-26deg) translateY(10px);
     opacity: 0;
   }
 }
@@ -168,7 +169,8 @@
     opacity: 1;
   }
   100% {
-    transform: scale(0) rotate(-15deg);
+    /* 茎と同じ縦横比率で滑らかに縮み、茎頭がはみ出ない */
+    transform: scale(0) rotate(26deg) translateY(10px);
     opacity: 0;
   }
 }
