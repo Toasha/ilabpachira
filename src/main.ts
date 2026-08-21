@@ -5,6 +5,7 @@ import { fetchLogsFromSpreadsheet } from './utils/api';
 import { createHeader } from './components/Header';
 import { createTodayCheckCard } from './components/TodayCheckCard';
 import { createCalendarView } from './components/CalendarView';
+import { createPlantLoader } from './components/PlantLoader';
 
 class App {
   private appElement: HTMLElement;
@@ -12,6 +13,7 @@ class App {
   private currentView: 'home' | 'calendar' = 'home';
   private currentYear: number;
   private currentMonthIndex: number;
+  private isLoading: boolean = false;
 
   constructor(appElement: HTMLElement) {
     this.appElement = appElement;
@@ -21,21 +23,34 @@ class App {
     this.currentYear = today.getFullYear();
     this.currentMonthIndex = today.getMonth();
 
+    const apiUrl = getGasApiUrl();
+    if (apiUrl) {
+      this.isLoading = true;
+    }
+
     this.render();
     this.syncWithSpreadsheet();
   }
 
   /**
-   * 静かにバックグラウンドでスプレッドシートと同期
+   * スプレッドシートと同期
    */
   private async syncWithSpreadsheet() {
     const apiUrl = getGasApiUrl();
-    if (!apiUrl) return;
+    if (!apiUrl) {
+      this.isLoading = false;
+      this.render();
+      return;
+    }
 
-    const remoteLogs = await fetchLogsFromSpreadsheet(apiUrl);
-    if (remoteLogs) {
-      this.logs = { ...this.logs, ...remoteLogs };
-      saveWateringLogs(this.logs);
+    try {
+      const remoteLogs = await fetchLogsFromSpreadsheet(apiUrl);
+      if (remoteLogs) {
+        this.logs = { ...this.logs, ...remoteLogs };
+        saveWateringLogs(this.logs);
+      }
+    } finally {
+      this.isLoading = false;
       this.render();
     }
   }
@@ -70,7 +85,10 @@ class App {
     const main = document.createElement('main');
     main.className = 'flex-1 mb-8';
 
-    if (this.currentView === 'home') {
+    if (this.isLoading) {
+      const loader = createPlantLoader();
+      main.appendChild(loader);
+    } else if (this.currentView === 'home') {
       const todayCard = createTodayCheckCard({
         logs: this.logs,
         onLogUpdate: this.handleLogUpdate,
@@ -106,3 +124,4 @@ document.addEventListener('DOMContentLoaded', () => {
     new App(appEl);
   }
 });
+
