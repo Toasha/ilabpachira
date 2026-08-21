@@ -22,8 +22,8 @@ export function createPlantLoader(): HTMLElement {
         />
       </div>
 
-      <!-- 波みたいに揺れながら前進するアクアロードバー (縮まない/退縮なし) -->
-      <div class="w-52 h-5 water-bar-track my-3 relative overflow-hidden animate-bar-sway">
+      <!-- 波みたいに前進するアクアロードバー (縮まない/退縮なし) -->
+      <div class="w-52 h-5 water-bar-track my-3 relative overflow-hidden">
         <div class="water-bar-fill h-full relative overflow-hidden">
           <!-- 1層目の深みのある水波 -->
           <svg class="animate-wave-layer1 absolute -top-1.5 left-0 w-[200%] h-7" viewBox="0 0 1200 120" preserveAspectRatio="none">
