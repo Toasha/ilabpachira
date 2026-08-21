@@ -11,51 +11,13 @@ export function createPlantLoader(): HTMLElement {
       <div class="absolute -top-10 -right-10 w-32 h-32 bg-pachira-200/30 rounded-full blur-2xl pointer-events-none"></div>
       <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-pachira-300/20 rounded-full blur-2xl pointer-events-none"></div>
 
-      <!-- 植物アニメーション領域 (土なし・水/ロードバーから芽がすくすく育つ) -->
+      <!-- ユーザー自作の背景透過GIFアニメーション -->
       <div class="relative w-44 h-40 flex items-center justify-center mb-2">
-
-        <!-- 植物の芽・双葉 SVG (ロードバーからニュキっと伸びる) -->
-        <div class="relative z-10 w-full h-full flex items-end justify-center pb-1 animate-sway-group">
-          <svg class="w-36 h-36 overflow-visible" viewBox="0 0 100 100">
-            <!-- 細身でゆるやかな曲線の茎 -->
-            <path 
-              d="M 50,90 Q 48,74 52,58" 
-              fill="none" 
-              stroke="#7fae64" 
-              stroke-width="3.5" 
-              stroke-linecap="round" 
-              class="animate-sprout"
-            />
-            
-            <!-- 左の葉 (スケッチ画像の左下向きにふっくら広がるフォルム＋側脈) -->
-            <g class="animate-leaf-left" style="transform-origin: 52px 58px;">
-              <path 
-                d="M 52,59 C 32,58 18,36 34,30 C 48,27 51,48 52,59 Z" 
-                fill="#9ac681" 
-              />
-              <!-- 主脈 -->
-              <path d="M 52,59 Q 38,44 32,33" fill="none" stroke="#e5f2e1" stroke-width="1.8" opacity="0.85" stroke-linecap="round" />
-              <!-- 側脈1 -->
-              <path d="M 44,51 Q 38,47 34,48" fill="none" stroke="#e5f2e1" stroke-width="1.2" opacity="0.75" stroke-linecap="round" />
-              <!-- 側脈2 -->
-              <path d="M 40,43 Q 36,39 32,41" fill="none" stroke="#e5f2e1" stroke-width="1.2" opacity="0.75" stroke-linecap="round" />
-            </g>
-
-            <!-- 右の葉 (スケッチ画像の右水平〜やや下向きに広がるフォルム＋側脈) -->
-            <g class="animate-leaf-right" style="transform-origin: 52px 58px;">
-              <path 
-                d="M 52,59 C 74,56 88,38 72,28 C 58,26 53,46 52,59 Z" 
-                fill="#7fae64" 
-              />
-              <!-- 主脈 -->
-              <path d="M 52,59 Q 66,42 74,31" fill="none" stroke="#e5f2e1" stroke-width="1.8" opacity="0.85" stroke-linecap="round" />
-              <!-- 側脈1 -->
-              <path d="M 59,51 Q 65,47 70,49" fill="none" stroke="#e5f2e1" stroke-width="1.2" opacity="0.75" stroke-linecap="round" />
-              <!-- 側脈2 -->
-              <path d="M 64,42 Q 70,39 74,42" fill="none" stroke="#e5f2e1" stroke-width="1.2" opacity="0.75" stroke-linecap="round" />
-            </g>
-          </svg>
-        </div>
+        <img 
+          src="/animated_sprout_transparent.gif" 
+          alt="植物が育つアニメーション" 
+          class="w-full h-full object-contain pointer-events-none select-none drop-shadow-sm animate-sway-group" 
+        />
       </div>
 
       <!-- 波みたいに揺れながら前進するアクアロードバー (縮まない/退縮なし) -->
