@@ -139,17 +139,16 @@
     opacity: 0;
   }
   35% {
-    transform: scale(1.18) rotate(-12deg);
+    transform: scale(1.15) rotate(-10deg);
     opacity: 1;
   }
   50%, 85% {
-    /* 伸びて自重で下向きにしなる */
-    transform: scale(1) rotate(-26deg) translateY(3px);
+    /* スケッチ画像の姿勢にピッタリ合う広がり */
+    transform: scale(1) rotate(-18deg) translateY(2px);
     opacity: 1;
   }
   100% {
-    /* 茎と同じ縦横比率で滑らかに縮み、茎頭がはみ出ない */
-    transform: scale(0) rotate(-26deg) translateY(10px);
+    transform: scale(0) rotate(-18deg) translateY(10px);
     opacity: 0;
   }
 }
@@ -160,17 +159,16 @@
     opacity: 0;
   }
   38% {
-    transform: scale(1.18) rotate(12deg);
+    transform: scale(1.15) rotate(10deg);
     opacity: 1;
   }
   52%, 85% {
-    /* 伸びて自重で下向きにしなる */
-    transform: scale(1) rotate(26deg) translateY(3px);
+    /* スケッチ画像の姿勢にピッタリ合う広がり */
+    transform: scale(1) rotate(18deg) translateY(2px);
     opacity: 1;
   }
   100% {
-    /* 茎と同じ縦横比率で滑らかに縮み、茎頭がはみ出ない */
-    transform: scale(0) rotate(26deg) translateY(10px);
+    transform: scale(0) rotate(18deg) translateY(10px);
     opacity: 0;
   }
 }

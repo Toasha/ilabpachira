@@ -17,34 +17,42 @@ export function createPlantLoader(): HTMLElement {
         <!-- 植物の芽・双葉 SVG (ロードバーからニュキっと伸びる) -->
         <div class="relative z-10 w-full h-full flex items-end justify-center pb-1 animate-sway-group">
           <svg class="w-36 h-36 overflow-visible" viewBox="0 0 100 100">
-            <!-- 細身で華奢な茎 (水面直上からすっと生える) -->
+            <!-- 細身でゆるやかな曲線の茎 -->
             <path 
-              d="M 50,90 Q 49,75 50,60" 
+              d="M 50,90 Q 48,74 52,58" 
               fill="none" 
               stroke="#7fae64" 
-              stroke-width="3.6" 
+              stroke-width="3.5" 
               stroke-linecap="round" 
               class="animate-sprout"
             />
             
-            <!-- 左の丸い双葉 (茎の頭部をすっぽり包み込むカバー構造) -->
-            <g class="animate-leaf-left" style="transform-origin: 50px 60px;">
+            <!-- 左の葉 (スケッチ画像の左下向きにふっくら広がるフォルム＋側脈) -->
+            <g class="animate-leaf-left" style="transform-origin: 52px 58px;">
               <path 
-                d="M 50,61 C 24,63 12,42 30,42 C 44,41 48,52 50,61 Z" 
+                d="M 52,59 C 32,58 18,36 34,30 C 48,27 51,48 52,59 Z" 
                 fill="#9ac681" 
               />
-              <!-- 葉脈 -->
-              <path d="M 50,60 Q 35,50 26,45" fill="none" stroke="#e5f2e1" stroke-width="1.8" opacity="0.8" stroke-linecap="round" />
+              <!-- 主脈 -->
+              <path d="M 52,59 Q 38,44 32,33" fill="none" stroke="#e5f2e1" stroke-width="1.8" opacity="0.85" stroke-linecap="round" />
+              <!-- 側脈1 -->
+              <path d="M 44,51 Q 38,47 34,48" fill="none" stroke="#e5f2e1" stroke-width="1.2" opacity="0.75" stroke-linecap="round" />
+              <!-- 側脈2 -->
+              <path d="M 40,43 Q 36,39 32,41" fill="none" stroke="#e5f2e1" stroke-width="1.2" opacity="0.75" stroke-linecap="round" />
             </g>
 
-            <!-- 右の丸い双葉 (茎の頭部をすっぽり包み込むカバー構造) -->
-            <g class="animate-leaf-right" style="transform-origin: 50px 60px;">
+            <!-- 右の葉 (スケッチ画像の右水平〜やや下向きに広がるフォルム＋側脈) -->
+            <g class="animate-leaf-right" style="transform-origin: 52px 58px;">
               <path 
-                d="M 50,61 C 76,63 88,42 70,42 C 56,41 52,52 50,61 Z" 
+                d="M 52,59 C 74,56 88,38 72,28 C 58,26 53,46 52,59 Z" 
                 fill="#7fae64" 
               />
-              <!-- 葉脈 -->
-              <path d="M 50,60 Q 65,50 74,45" fill="none" stroke="#e5f2e1" stroke-width="1.8" opacity="0.8" stroke-linecap="round" />
+              <!-- 主脈 -->
+              <path d="M 52,59 Q 66,42 74,31" fill="none" stroke="#e5f2e1" stroke-width="1.8" opacity="0.85" stroke-linecap="round" />
+              <!-- 側脈1 -->
+              <path d="M 59,51 Q 65,47 70,49" fill="none" stroke="#e5f2e1" stroke-width="1.2" opacity="0.75" stroke-linecap="round" />
+              <!-- 側脈2 -->
+              <path d="M 64,42 Q 70,39 74,42" fill="none" stroke="#e5f2e1" stroke-width="1.2" opacity="0.75" stroke-linecap="round" />
             </g>
           </svg>
         </div>
