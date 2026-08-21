@@ -134,21 +134,17 @@
 }
 
 @keyframes leafLeft {
-  0%, 20% {
+  0%, 18% {
     transform: scale(0) rotate(15deg);
     opacity: 0;
   }
-  38% {
-    transform: scale(1.15) rotate(-10deg);
+  35% {
+    transform: scale(1.18) rotate(-12deg);
     opacity: 1;
   }
-  50% {
-    /* 自重でしっかり下向きに傾く */
-    transform: scale(1) rotate(-28deg) translateY(4px);
-    opacity: 1;
-  }
-  65%, 85% {
-    transform: scale(1) rotate(-26deg) translateY(4px);
+  50%, 85% {
+    /* 伸びて自重で下向きにしなる */
+    transform: scale(1) rotate(-26deg) translateY(3px);
     opacity: 1;
   }
   100% {
@@ -163,16 +159,12 @@
     opacity: 0;
   }
   38% {
-    transform: scale(1.15) rotate(10deg);
+    transform: scale(1.18) rotate(12deg);
     opacity: 1;
   }
-  50% {
-    /* 自重でしっかり下向きに傾く */
-    transform: scale(1) rotate(28deg) translateY(4px);
-    opacity: 1;
-  }
-  65%, 85% {
-    transform: scale(1) rotate(26deg) translateY(4px);
+  52%, 85% {
+    /* 伸びて自重で下向きにしなる */
+    transform: scale(1) rotate(26deg) translateY(3px);
     opacity: 1;
   }
   100% {

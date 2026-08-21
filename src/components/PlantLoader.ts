@@ -21,30 +21,30 @@ export function createPlantLoader(): HTMLElement {
             <path 
               d="M 50,90 Q 49,75 50,60" 
               fill="none" 
-              stroke="#56ab52" 
+              stroke="#7fae64" 
               stroke-width="3.6" 
               stroke-linecap="round" 
               class="animate-sprout"
             />
             
-            <!-- 左の丸い双葉 (自重でしっかり下向きにしなる) -->
+            <!-- 左の丸い双葉 (最初の配色: #9ac681) -->
             <g class="animate-leaf-left" style="transform-origin: 50px 60px;">
               <path 
                 d="M 50,60 C 24,62 12,42 30,42 C 44,41 47,52 50,60 Z" 
-                fill="#56ab52" 
+                fill="#9ac681" 
               />
               <!-- 葉脈 -->
-              <path d="M 50,60 Q 35,50 26,45" fill="none" stroke="#7bca76" stroke-width="1.8" stroke-linecap="round" />
+              <path d="M 50,60 Q 35,50 26,45" fill="none" stroke="#e5f2e1" stroke-width="1.8" opacity="0.8" stroke-linecap="round" />
             </g>
 
-            <!-- 右の丸い双葉 (自重でしっかり下向きにしなる) -->
+            <!-- 右の丸い双葉 (最初の配色: #7fae64) -->
             <g class="animate-leaf-right" style="transform-origin: 50px 60px;">
               <path 
                 d="M 50,60 C 76,62 88,42 70,42 C 56,41 53,52 50,60 Z" 
-                fill="#56ab52" 
+                fill="#7fae64" 
               />
               <!-- 葉脈 -->
-              <path d="M 50,60 Q 65,50 74,45" fill="none" stroke="#7bca76" stroke-width="1.8" stroke-linecap="round" />
+              <path d="M 50,60 Q 65,50 74,45" fill="none" stroke="#e5f2e1" stroke-width="1.8" opacity="0.8" stroke-linecap="round" />
             </g>
           </svg>
         </div>
