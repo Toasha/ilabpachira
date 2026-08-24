@@ -378,46 +378,54 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .water-bar-fill {
-  background: linear-gradient(90deg, #38bdf8, #0ea5e9, #06b6d4, #38bdf8);
+  background: linear-gradient(90deg, #0284c7, #0284c7 30%, #06b6d4 70%, #38bdf8);
   background-size: 200% 100%;
   border-radius: 9999px;
-  animation: waterFlow 2s linear infinite, waterForwardProgress 4s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5), inset 0 1.5px 3px rgba(255, 255, 255, 0.8);
+  animation: waterFlow 3.5s linear infinite, waterForwardProgress 4.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6), inset 0 1.5px 3px rgba(255, 255, 255, 0.8);
   position: relative;
   overflow: hidden;
 }
 
-.water-bar-fill::after {
-  content: '';
+.water-foam {
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
-  animation: liquidShimmer 1.6s infinite ease-in-out;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
 }
 
-/* 水面のうねる波アニメーション */
-@keyframes waveMotion1 {
+/* 水面のリアルな波の周期アニメーション (多層パララックス) */
+@keyframes waveFlowBack {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-25%) translateY(-3px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes waveFlowMid {
+  0% { transform: translateX(-50%) translateY(-2px); }
+  50% { transform: translateX(-25%) translateY(3px); }
+  100% { transform: translateX(0) translateY(-2px); }
+}
+
+@keyframes waveFlowFront {
   0% { transform: translateX(0) translateY(0); }
   50% { transform: translateX(-25%) translateY(-2px); }
   100% { transform: translateX(-50%) translateY(0); }
 }
 
-@keyframes waveMotion2 {
-  0% { transform: translateX(-50%) translateY(-1px); }
-  50% { transform: translateX(-25%) translateY(2px); }
-  100% { transform: translateX(0) translateY(-1px); }
+.animate-wave-layer-back {
+  animation: waveFlowBack 4.8s ease-in-out infinite;
 }
 
-
-.animate-wave-layer1 {
-  animation: waveMotion1 2.2s linear infinite;
+.animate-wave-layer-mid {
+  animation: waveFlowMid 3.6s ease-in-out infinite;
 }
 
-.animate-wave-layer2 {
-  animation: waveMotion2 1.5s linear infinite;
+.animate-wave-layer-front {
+  animation: waveFlowFront 2.6s linear infinite;
 }
 
 

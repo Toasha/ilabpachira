@@ -22,17 +22,23 @@ export function createPlantLoader(): HTMLElement {
         />
       </div>
 
-      <!-- 波みたいに前進するアクアロードバー (縮まない/退縮なし) -->
-      <div class="w-52 h-5 water-bar-track my-3 relative overflow-hidden">
-        <div class="water-bar-fill h-full relative overflow-hidden">
-          <!-- 1層目の深みのある水波 -->
-          <svg class="animate-wave-layer1 absolute -top-1.5 left-0 w-[200%] h-7" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,30 Q150,65 300,30 T600,30 T900,30 T1200,30 L1200,120 L0,120 Z" fill="#0284c7" opacity="0.45" />
+      <!-- 波みたいに前進するアクアロードバー (3層パララックス水波) -->
+      <div class="w-56 h-7 water-bar-track my-3.5 relative overflow-hidden p-0.5">
+        <div class="water-bar-fill h-full relative overflow-hidden rounded-full">
+          <!-- 1層目: 奥のディープブルー波 -->
+          <svg class="animate-wave-layer-back absolute -top-3 left-0 w-[300%] h-12 pointer-events-none" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,45 C150,85 300,15 450,50 C600,85 750,15 900,50 C1050,85 1200,15 1350,50 L1350,120 L0,120 Z" fill="#0284c7" opacity="0.5" />
           </svg>
-          <!-- 2層目の明るい波面 -->
-          <svg class="animate-wave-layer2 absolute -top-2 left-0 w-[200%] h-7" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,45 Q150,10 300,45 T600,45 T900,45 T1200,45 L1200,120 L0,120 Z" fill="#38bdf8" opacity="0.8" />
+          <!-- 2層目: 中間のアクア波 -->
+          <svg class="animate-wave-layer-mid absolute -top-2.5 left-0 w-[300%] h-12 pointer-events-none" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,50 C100,15 250,75 400,35 C550,5 700,65 850,30 C1000,5 1150,65 1300,30 L1300,120 L0,120 Z" fill="#06b6d4" opacity="0.7" />
           </svg>
+          <!-- 3層目: 手前のクリスタルスカイ波 -->
+          <svg class="animate-wave-layer-front absolute -top-2 left-0 w-[300%] h-12 pointer-events-none" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,35 C80,60 180,18 280,45 C380,72 480,20 580,45 C680,68 780,18 880,45 C980,72 1080,20 1200,45 L1200,120 L0,120 Z" fill="#38bdf8" opacity="0.9" />
+          </svg>
+          <!-- 水面のツヤ・泡光彩 -->
+          <div class="water-foam"></div>
         </div>
       </div>
 
