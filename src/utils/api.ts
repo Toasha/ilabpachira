@@ -30,7 +30,7 @@ export async function fetchLogsFromSpreadsheet(apiUrl: string): Promise<StorageS
 
 /**
  * 水やり・葉水ログをスプレッドシート (GAS Web App) へ送信保存
- * CORSエラーを100%回避するGETクエリ更新方式を採用
+ * CORSエラーを100%回避するGETクエリ更新方式を採用 (軽量・高速)
  */
 export async function sendLogToSpreadsheet(apiUrl: string, entry: WateringEntry): Promise<boolean> {
   if (!apiUrl || !apiUrl.startsWith('http')) return false;
@@ -42,7 +42,6 @@ export async function sendLogToSpreadsheet(apiUrl: string, entry: WateringEntry)
     url.searchParams.set('soil', String(entry.soil));
     url.searchParams.set('mist', String(entry.mist));
 
-    // GETで更新リクエストを送信 (CORS制限なし・確実に到達)
     const res = await fetch(url.toString(), {
       method: 'GET',
       redirect: 'follow'

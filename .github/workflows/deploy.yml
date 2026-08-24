@@ -49,3 +49,50 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Send Discord notification
+        if: always()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "DISCORD_WEBHOOK secret is not set. Skipping notification."
+            exit 0
+          fi
+
+          if [ "${{ job.status }}" = "success" ]; then
+            COLOR=3066993
+            TITLE="✅ GitHub Pages デプロイ完了"
+            DESC="🌱 **パキラの水やり記録** の最新版が正常に公開されました！\n\n**公開URL**: ${{ steps.deployment.outputs.page_url }}"
+          else
+            COLOR=15158332
+            TITLE="❌ GitHub Pages デプロイ失敗"
+            DESC="⚠️ デプロイビルドでエラーが発生しました。"
+          fi
+
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d '{
+                 "embeds": [{
+                   "title": "'"$TITLE"'",
+                   "description": "'"$DESC"'",
+                   "url": "${{ steps.deployment.outputs.page_url }}",
+                   "color": '"$COLOR"',
+                   "fields": [
+                     {
+                       "name": "コミットメッセージ",
+                       "value": "${{ github.event.head_commit.message }}"
+                     },
+                     {
+                       "name": "ブランチ",
+                       "value": "`${{ github.ref_name }}`",
+                       "inline": true
+                     }
+                   ],
+                   "footer": {
+                     "text": "GitHub Actions • パキラの水やり記録"
+                   }
+                 }]
+               }' \
+               "$DISCORD_WEBHOOK"
+

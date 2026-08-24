@@ -46,6 +46,7 @@ class App {
     try {
       const remoteLogs = await fetchLogsFromSpreadsheet(apiUrl);
       if (remoteLogs) {
+        // マージして保存
         this.logs = { ...this.logs, ...remoteLogs };
         saveWateringLogs(this.logs);
       }
@@ -77,7 +78,7 @@ class App {
     // ヘッダー
     const header = createHeader({
       currentView: this.currentView,
-      onViewChange: this.handleViewChange,
+      onViewChange: this.handleViewChange
     });
     this.appElement.appendChild(header);
 
@@ -92,7 +93,7 @@ class App {
       const todayCard = createTodayCheckCard({
         logs: this.logs,
         onLogUpdate: this.handleLogUpdate,
-        onOpenCalendar: () => this.handleViewChange('calendar'),
+        onOpenCalendar: () => this.handleViewChange('calendar')
       });
       main.appendChild(todayCard);
     } else {
@@ -101,7 +102,7 @@ class App {
         currentYear: this.currentYear,
         currentMonthIndex: this.currentMonthIndex,
         onMonthChange: this.handleMonthChange,
-        onLogUpdate: this.handleLogUpdate,
+        onLogUpdate: this.handleLogUpdate
       });
       main.appendChild(calendarView);
     }
@@ -124,4 +125,3 @@ document.addEventListener('DOMContentLoaded', () => {
     new App(appEl);
   }
 });
-

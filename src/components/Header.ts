@@ -17,11 +17,11 @@ export function createHeader({ currentView, onViewChange }: HeaderProps): HTMLEl
           <path d="M12 13C12 7.5 16.5 4 21 4c0 5.5-3.5 10-9 9Z"/>
         </svg>
       </div>
-      <div>
-        <h1 class="text-lg font-bold font-maru text-pachira-text tracking-tight">
+      <div class="whitespace-nowrap flex-shrink-0">
+        <h1 class="text-base sm:text-lg font-bold font-maru text-pachira-text tracking-tight">
           パキラの水やり記録
         </h1>
-        <p class="text-xs text-pachira-textMuted tracking-wider font-sans">Watering & Leaf Mist Log</p>
+        <p class="text-[10px] sm:text-xs text-pachira-textMuted tracking-wider font-sans">Watering & Leaf Mist Log</p>
       </div>
     </button>
 

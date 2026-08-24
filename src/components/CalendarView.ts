@@ -39,7 +39,7 @@ export function createCalendarView({
   const mistCount = Object.keys(logs).filter(key => key.startsWith(currentMonthPrefix) && logs[key]?.mist).length;
 
   container.innerHTML = `
-    <div class="neu-card p-4 sm:p-6 md:p-8 space-y-6">
+    <div class="neu-card p-3 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
       <!-- ナビゲーション -->
       <div class="flex items-center justify-between">
         <button id="btn-prev-month" class="w-10 h-10 neu-button flex items-center justify-center text-pachira-text hover:text-pachira-600">
@@ -72,18 +72,16 @@ export function createCalendarView({
       </div>
 
       <!-- 日付グリッド -->
-      <div class="grid grid-cols-7 gap-1.5 sm:gap-2">
+      <div class="grid grid-cols-7 gap-1 sm:gap-2">
         ${days.map(day => {
           const entry = logs[day.dateStr];
           const hasSoil = entry?.soil || false;
           const hasMist = entry?.mist || false;
 
-          let cellClass = 'aspect-square p-1 sm:p-2 rounded-2xl flex flex-col items-center justify-between transition-all select-none cursor-pointer ';
+          let cellClass = 'aspect-square p-1 sm:p-2 rounded-xl sm:rounded-2xl flex flex-col items-center justify-between transition-all select-none cursor-pointer overflow-hidden ';
           
           if (!day.isCurrentMonth) {
             cellClass += 'opacity-30 bg-pachira-bg/40 ';
-          } else if (day.isToday) {
-            cellClass += (hasSoil || hasMist) ? 'neu-green-pressed border-2 border-white/60 ' : 'neu-pressed border-2 border-pachira-400 ';
           } else if (hasSoil || hasMist) {
             cellClass += 'neu-green-btn ';
           } else {
@@ -94,17 +92,19 @@ export function createCalendarView({
 
           return `
             <div class="calendar-cell ${cellClass}" data-date="${day.dateStr}">
-              <div class="w-full flex items-center justify-between">
-                <span class="text-xs font-bold font-maru ${isDarkBg ? 'text-white' : (day.isCurrentMonth ? 'text-pachira-text' : 'text-pachira-textMuted')}">
+              <div class="w-full flex items-center justify-between px-0.5 pt-0.5 leading-none">
+                <span class="text-xs font-bold font-maru ${
+                  isDarkBg ? 'text-white' : (day.isCurrentMonth ? 'text-pachira-text' : 'text-pachira-textMuted')
+                }">
                   ${day.dayNumber}
                 </span>
                 ${day.isToday ? `
-                  <span class="text-[9px] px-1 rounded font-bold ${isDarkBg ? 'bg-white/30 text-white' : 'bg-pachira-400 text-white'}">今日</span>
+                  <span class="w-2 h-2 rounded-full ${isDarkBg ? 'bg-amber-300 shadow-sm' : 'bg-pachira-600 shadow-sm'} inline-block flex-shrink-0" title="今日"></span>
                 ` : ''}
               </div>
 
-              <!-- 印 (土 / 葉水) -->
-              <div class="my-auto flex flex-col items-center justify-center gap-0.5 text-[10px] font-bold">
+              <!-- 印 (土 / 葉水 - 縦並び) -->
+              <div class="my-auto flex flex-col items-center justify-center text-[8.5px] sm:text-[10px] font-bold leading-[1.05] space-y-[1px]">
                 ${hasSoil ? `
                   <span class="${isDarkBg ? 'text-white' : 'text-pachira-700'}">土 ◯</span>
                 ` : ''}
@@ -118,7 +118,7 @@ export function createCalendarView({
       </div>
 
       <!-- 今月の集計 -->
-      <div class="pt-4 border-t border-pachira-darkShadow/15 flex justify-around text-xs font-maru font-bold text-pachira-text">
+      <div class="pt-4 border-t border-pachira-darkShadow/15 flex justify-center sm:justify-around gap-6 text-xs font-maru font-bold text-pachira-text">
         <div>🪴 土の水やり: <span class="text-pachira-600 text-sm">${soilCount}</span> 回</div>
         <div>🚿 葉水: <span class="text-pachira-600 text-sm">${mistCount}</span> 回</div>
       </div>
@@ -166,7 +166,11 @@ export function createCalendarView({
 /**
  * 日付タップ時のチェック変更ダイアログ
  */
-function showSimpleEditModal(dateStr: string, logs: StorageState, onLogUpdate: (logs: StorageState) => void) {
+function showSimpleEditModal(
+  dateStr: string,
+  logs: StorageState,
+  onLogUpdate: (logs: StorageState) => void
+) {
   const existing = document.getElementById('day-edit-modal');
   if (existing) existing.remove();
 
@@ -174,10 +178,10 @@ function showSimpleEditModal(dateStr: string, logs: StorageState, onLogUpdate: (
 
   const modal = document.createElement('div');
   modal.id = 'day-edit-modal';
-  modal.className = 'fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-pop';
+  modal.className = 'fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-pop';
 
   modal.innerHTML = `
-    <div class="neu-card p-6 w-full max-w-xs text-center space-y-5">
+    <div class="neu-card p-6 w-full max-w-sm text-center space-y-5">
       <h3 class="text-base font-bold font-maru text-pachira-text">
         ${dateStr} の記録
       </h3>
